@@ -89,7 +89,8 @@ def _get_available_extensions():
     parsers_dir = os.path.join(os.path.dirname(__file__))
     glob_filename = os.path.join(parsers_dir, "*" + _FILENAME_SUFFIX + ".py")
     # escape backslashes for python 3.6+
-    glob_filename = glob_filename.replace("//", "////")
+    glob_filename = glob_filename.replace("\\", "\\\\")
+    print(glob_filename)
     ext_re = re.compile(glob_filename.replace('*', r"(?P<ext>\w+)"))
     for filename in glob.glob(glob_filename):
         ext_match = ext_re.match(filename)
